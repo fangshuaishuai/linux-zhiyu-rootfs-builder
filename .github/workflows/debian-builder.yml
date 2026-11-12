@@ -209,8 +209,12 @@ jobs:
               if [ "$DESKTOP" = plasmamobile ]; then
                 ch systemctl enable sddm
               elif ch apt-cache show plasma-login-manager >/dev/null 2>&1; then
+                # kde-standard pulled sddm in via Recommends; drop it so that
+                # plasma-login-manager can own display-manager.service.
+                ch apt-get remove -y sddm || true
                 ch apt-get install -y --no-install-recommends plasma-login-manager
                 ch systemctl enable plasmalogin
+
               else
                 # trixie has no plasma-login-manager; sddm is the fallback
                 ch apt-get install -y --no-install-recommends sddm
