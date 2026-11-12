@@ -151,7 +151,7 @@ jobs:
           # kscreen.  Keeping --no-install-recommends for the rest of the list
           # keeps the support packages predictable.
           case "$DESKTOP" in
-            kde) DESKTOP_PKGS="kde-standard plasma-login-manager" ;;
+            kde) DESKTOP_PKGS="kde-standard" ;;
             gnome)
               # gnome alone does not pull the Adwaita icon theme or Cantarell:
               # without them the shell has no symbolic icons (missing arrows,
